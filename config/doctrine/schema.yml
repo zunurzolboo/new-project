@@ -23,7 +23,7 @@ Category:
     description:     { type: string(), notnull: false }
     parent_id:      { type: integer(4), notnull: true }
     published:       { type: boolean, notnull: true, default: '1' }
-    access:          { type: string(50), notnull: true }
+    icon:          { type: string(50), notnull: true }
     created_by:      { type: integer, notnull: true }
     updated_by:      { type: integer, notnull: false }
   relations:
