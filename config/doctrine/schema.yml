@@ -56,9 +56,8 @@ Product:
     created_by:      { type: integer(4), notnull: true }
     updated_by:      { type: integer(4), notnull: false }
 
-
 #shop 
-shop:
+Shop:
   actAs:
       Timestampable: ~
   columns:
@@ -71,6 +70,39 @@ shop:
     phone3: {type: string(100),notnull: false }
     description: {type: string(),notnull: false }
     description: {type: string(),notnull: false }
+
+ShopCategory:
+  actAs:
+    Timestampable:   ~
+  columns:
+    id:              { type: integer(4), unsigned: false, primary: true, autoincrement: true }
+    name:            { type: string(100), notnull: false }
+    description:     { type: string(1000), notnull: false }
+    parent_id:      { type: integer(4), notnull: true }
+    published:       { type: boolean, notnull: true, default: '1' }
+    icon:          { type: string(50), notnull: true }
+    created_by:      { type: integer, notnull: true }
+    updated_by:      { type: integer, notnull: false }
+  relations:
+    Category:       { class: Category, local: parent_id, foreign: id, alias: Parent, foreignAlias: Childs }
+
+
+ShopProduct:
+  actAs:
+      Timestampable: ~
+  columns:
+    id:              { type: integer(4), unsigned: false, primary: true, autoincrement: true }
+    name:   {type: string(255), notnull: false }
+    description: {type: string(),notnull: false }
+    address: {type: string(500),notnull: false }
+    phone: {type: string(100),notnull: false }
+    phone2: {type: string(100),notnull: false }
+    phone3: {type: string(100),notnull: false }
+    description: {type: string(),notnull: false }
+    description: {type: string(),notnull: false }
+
+
+
 
 #content
 SectionType:
